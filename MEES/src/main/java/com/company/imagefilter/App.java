@@ -1,10 +1,11 @@
 package com.company.imagefilter;
 
 
+import org.apache.commons.cli.*;
+
 public class App
 {
-    public static void parser(String[] args)
-    {
+    /*public static void parser(String[] args) throws ParseException {
         //options
         Options options = new Options();
 
@@ -33,11 +34,12 @@ public class App
             // filters without parse
         }
         treatment(file, fileModificate, filters);
-    }
+    }*/
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws ParseException {
         System.out.println("hello");
-        parser(args);
+       // parser(args);
+
+
     }
 }
