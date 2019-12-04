@@ -4,6 +4,7 @@ import java.sql.SQLOutput;
 import org.apache.commons.cli.*;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
+import java.io.File;
 
 import java.lang.String;
 
@@ -30,6 +31,22 @@ public class App {
         System.out.println("L'application du filtre à bien marché");
     }
 
+    public static void treatment(String file, String output, String filters)
+    {
+         File directory = new File(file);
+         if (directory.isDirectory())
+         {
+             File[] listFile = directory.listFiles();
+             if (listFile != null)
+             {
+                 for (int i = 0; i < listFile.length; i++)
+                 {
+                     String path = "/" + listFile[i];
+                     System.out.println("path = " + path);
+                 }
+             }
+         }
+    }
 
     public static void parser(String[] args) throws ParseException {
         //options
@@ -60,7 +77,7 @@ public class App {
             // filters without parse
         }
         System.out.println("file = " + file + " fileModificate = " + fileModificate + " filters = " + filters);
-      // treatment(file, fileModificate, filters);
+        treatment(file, fileModificate, filters);
     }
 }
 
