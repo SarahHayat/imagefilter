@@ -17,18 +17,6 @@ public class App {
             e.printStackTrace();
         }
 
-
-
-        String filename = "toModificate/index.jpg";
-        Mat image = opencv_imgcodecs.imread(filename);
-        BlackAndWhite bw = new BlackAndWhite();
-        try {
-            bw.filterGrayscale(image);
-        } catch (JavaCVHelperException e) {
-            e.printStackTrace();
-            System.out.println("le filtre n'a pas pu etre appliqué");
-        }
-        System.out.println("L'application du filtre à bien marché");
     }
 
     public static void treatment(String file, String output, String filters)
@@ -41,8 +29,20 @@ public class App {
              {
                  for (int i = 0; i < listFile.length; i++)
                  {
-                     String path = "/" + listFile[i];
-                     System.out.println("path = " + path);
+                     System.out.println(String.valueOf(listFile[i]));
+                     if (String.valueOf(listFile[i]).contains(".png") == true ||
+                             String.valueOf(listFile[i]).contains(".jpg") == true)
+                     {
+                         Mat image = opencv_imgcodecs.imread(String.valueOf(listFile[i]));
+                         BlackAndWhite bw = new BlackAndWhite();
+                         try {
+                             bw.filterGrayscale(image);
+                         } catch (JavaCVHelperException e) {
+                             e.printStackTrace();
+                             System.out.println("le filtre n'a pas pu etre appliqué");
+                         }
+                         System.out.println("L'application du filtre à bien marché");
+                     }
                  }
              }
          }
