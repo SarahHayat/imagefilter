@@ -16,6 +16,8 @@ public class App {
             e.printStackTrace();
         }
 
+
+
         String filename = "toModificate/index.jpg";
         Mat image = opencv_imgcodecs.imread(filename);
         BlackAndWhite bw = new BlackAndWhite();
