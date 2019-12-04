@@ -56,6 +56,18 @@ filtre : Blur
 filtre : Blur
  image org.bytedeco.opencv.opencv_core.Mat[width=275,height=183,depth=8,channels=3]
 filtre : BlackAndWhite
+<<<<<<< HEAD
+ image org.bytedeco.opencv.opencv_core.Mat[width=359,height=140,depth=8,channels=3]
+filtre : BlackAndWhite
+ image org.bytedeco.opencv.opencv_core.Mat[width=275,height=183,depth=8,channels=3]
+filtre : BlackAndWhite
+ image org.bytedeco.opencv.opencv_core.Mat[width=311,height=162,depth=8,channels=3]
+filtre : BlackAndWhite
+ image org.bytedeco.opencv.opencv_core.Mat[width=267,height=189,depth=8,channels=3]
+filtre : BlackAndWhite
+ image org.bytedeco.opencv.opencv_core.Mat[width=275,height=183,depth=8,channels=3]
+filtre : BlackAndWhite
+=======
  image org.bytedeco.opencv.opencv_core.Mat[width=275,height=183,depth=8,channels=3]
 filtre : Blur
  image org.bytedeco.opencv.opencv_core.Mat[width=275,height=183,depth=8,channels=3]
@@ -150,3 +162,4 @@ filtre : Dilate
 filtre : Blur
  image org.bytedeco.opencv.opencv_core.Mat[width=698,height=618,depth=8,channels=3]
 filtre : Dilate
+>>>>>>> marine

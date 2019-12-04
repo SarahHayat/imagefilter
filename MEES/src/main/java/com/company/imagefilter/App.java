@@ -2,8 +2,11 @@ package com.company.imagefilter;
 import org.apache.commons.cli.*;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
+import org.ini4j.Ini;
+import sun.swing.FilePane;
+import javax.swing.text.AbstractDocument;
 import java.io.File;
-
+import java.io.IOException;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +19,9 @@ public class App {
 
         try {
             parser(args);
-        } catch (ParseException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     public static void treatment(String file, String output, String filters) {
@@ -87,13 +87,14 @@ public class App {
         }
     }
 
-    public static void parser(String[] args) throws ParseException {
+    public static void parser(String[] args) throws ParseException, IOException {
         //options
         Options options = new Options();
 
         options.addOption("f", "filters", true, "filters");
         options.addOption("i", true, "File with picture source");
         options.addOption("o", true, "File with picture modificate");
+        options.addOption("file",true,"file ini config");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -101,6 +102,27 @@ public class App {
         String fileModificate = "output";
         String file = "toModificate";
         String filters = null;
+
+        if (cmd.hasOption("file")) {
+            String filePathIni = cmd.getOptionValue("file");
+            if (filePathIni != null) {
+                Ini fileIni = new Ini(new File(filePathIni));
+                Ini.Section section = fileIni.get("general");
+                file = section.get("inputDir");
+                fileModificate = section.get("outputDir");
+                String log = section.get("logFile");
+                if (log == null)
+                    log = "log";
+                Ini.Section filter = fileIni.get("filters");
+                String filterAdd =  filter.get("content");
+                System.out.println(filterAdd);
+                if (filterAdd != null)
+                    filters = String.valueOf(filterAdd);
+            }
+
+        }
+        else
+            System.out.println("file not found");
         if (cmd.hasOption("i")) {
             file = cmd.getOptionValue("i");
             // retrieve the images from the folder
