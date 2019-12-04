@@ -8,11 +8,12 @@ import static org.bytedeco.opencv.global.opencv_imgproc.dilate;
 import static org.bytedeco.opencv.global.opencv_imgproc.getStructuringElement;
 
 public class Dilate {
-    public Mat filterDilate(Mat image) throws JavaCVHelperException {
+    public Mat filterDilate(Mat image, Log l) throws JavaCVHelperException {
         int size = 8;
         Mat result = image.clone();
         Mat element = getStructuringElement(Imgproc.MORPH_RECT, new Size(2 * size + 1, 2 * size + 1));
         dilate(image, result, element);
+        l.Log(" image " + image + "\n" + "filtre : " + Dilate.class.getSimpleName() + "\n");
 
         if (result == null) {
             throw new JavaCVHelperException("la dilatation ne marche pas");
