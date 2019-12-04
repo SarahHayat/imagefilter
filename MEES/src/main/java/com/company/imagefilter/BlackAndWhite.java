@@ -12,10 +12,11 @@ import java.io.IOException;
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
 
 public class BlackAndWhite extends Filter {
-   // public Mat filterGrayscale (Mat image, Log l) throws JavaCVHelperException {
+    //public Mat filterGrayscale() throws JavaCVHelperException {
 
+    //return  filterGrayscale();
+    //}
 
-   // }
 
     @Override
     Mat process(Mat image) throws JavaCVHelperException {
