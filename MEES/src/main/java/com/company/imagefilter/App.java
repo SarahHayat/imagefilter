@@ -4,7 +4,6 @@ import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.ini4j.Ini;
 import sun.swing.FilePane;
-
 import javax.swing.text.AbstractDocument;
 import java.io.File;
 import java.io.IOException;
@@ -23,9 +22,6 @@ public class App {
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     public static void treatment(String file, String output, String filters) {
