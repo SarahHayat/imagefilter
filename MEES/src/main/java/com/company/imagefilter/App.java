@@ -5,10 +5,16 @@ import org.bytedeco.opencv.opencv_core.Mat;
 import java.io.File;
 
 import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
    static Log l = new Log();
+   static List<Filter> filterList = new ArrayList<>();
     public static void main(String[] args) {
+
+        filterList.add(new Blur());
+        filterList.add(new BlackAndWhite());
 
 
         try {
@@ -16,9 +22,12 @@ public class App {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
+
     }
 
-    public static void treatment(String file, String output, String filters) {
+    public static void treatment(String file, String output, String filters, Mat image) {
 
         File directory = new File(file);
         if (directory.isDirectory())
@@ -32,15 +41,36 @@ public class App {
                     if (String.valueOf(listFile[i]).contains(".png") == true ||
                             String.valueOf(listFile[i]).contains(".jpg") == true)
                     {
-                        Mat image = opencv_imgcodecs.imread(String.valueOf(listFile[i]));
-                        BlackAndWhite bw = new BlackAndWhite();
+                        image = opencv_imgcodecs.imread(String.valueOf(listFile[i]));
+                       // BlackAndWhite bw = new BlackAndWhite();
+                        String filterArg = "blur|grayscale";
+                        String[] split = filterArg.split("\\|");
+
+                        for ( String s : split){
+                            switch(s) {
+                                case "blur" :
+                                    filterList.add(new Blur());
+                                    break;
+                                case "grayscale" :
+                                    filterList.add(new BlackAndWhite());
+                                    break;
+                                case "dilate" :
+                                    filterList.add(new Dilate());
+                                    break;
+                            }
+                        }
+
                         try {
-                            Mat result = bw.filterGrayscale(image, l);
+
+                            for(Filter f : filterList) {
+                                image = f.process(image);
+                            }
+                           // Mat result = bw.filterGrayscale(image, l);
 
                             File outputDir = new File("Modifiated");
                             File outputFile = new File(outputDir, "output.jpg");
 
-                            opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), result);
+                            opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
                         } catch (JavaCVHelperException e) {
                             e.printStackTrace();
                             System.out.println("le filtre n'a pas pu etre appliqué");
@@ -80,7 +110,7 @@ public class App {
         }
         System.out.println("file = " + file + " fileModificate = " + fileModificate + " filters = " + filters);
 
-        treatment(file, fileModificate, filters);
+        treatment(file, fileModificate, filters, );
     }
 }
 

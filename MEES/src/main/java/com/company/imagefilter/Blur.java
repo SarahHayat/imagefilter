@@ -5,17 +5,22 @@ import org.bytedeco.opencv.opencv_core.Size;
 
 import static org.bytedeco.opencv.global.opencv_imgproc.GaussianBlur;
 
-public class Blur {
-    public Mat filterBlur(Mat image, Log l) throws JavaCVHelperException  {
-        int size = 3;
-        Mat result = image.clone();
-        GaussianBlur(image, result, new Size(size, size), 0);
+public class Blur extends Filter  {
+//    public Mat filterBlur(Mat image, Log l) throws JavaCVHelperException  {
+//
 
-        l.Log(" image " + image + "\n" + "filtre : " + Blur.class.getSimpleName() + "\n");
+    @Override
+    Mat process(Mat image) throws JavaCVHelperException {
+            int size = 11;
+            Mat result = image.clone();
+            GaussianBlur(image, result, new Size(size, size), 0);
 
-        if (result == null) {
-            throw new JavaCVHelperException("le flou ne marche pas");
+            App.l.Log(" image " + image + "\n" + "filtre : " + Blur.class.getSimpleName() + "\n");
 
-        }return result;
-    }
-}
+            if (result == null) {
+                throw new JavaCVHelperException("le flou ne marche pas");
+
+            }return result;
+        }
+        }
+
