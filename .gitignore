@@ -6,3 +6,7 @@ MEES/build/
 MEES/.gradle/
 
 MEES/gradle/
+
+MEES/.DS_Store
+
+.DS_Store
