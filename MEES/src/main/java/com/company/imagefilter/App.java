@@ -19,7 +19,7 @@ public class App {
     }
 
     public static void treatment(String file, String output, String filters) {
-       
+
         File directory = new File(file);
         if (directory.isDirectory())
         {
@@ -35,7 +35,12 @@ public class App {
                         Mat image = opencv_imgcodecs.imread(String.valueOf(listFile[i]));
                         BlackAndWhite bw = new BlackAndWhite();
                         try {
-                            bw.filterGrayscale(image,l);
+                            Mat result = bw.filterGrayscale(image, l);
+
+                            File outputDir = new File("Modifiated");
+                            File outputFile = new File(outputDir, "output.jpg");
+
+                            opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), result);
                         } catch (JavaCVHelperException e) {
                             e.printStackTrace();
                             System.out.println("le filtre n'a pas pu etre appliqué");

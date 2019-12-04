@@ -9,7 +9,7 @@ public class Filter {
         Mat image = opencv_imgcodecs.imread(filename);
         BlackAndWhite bw = new BlackAndWhite();
         try {
-            bw.filterGrayscale(image);
+            bw.filterGrayscale(image, App.l);
         } catch (JavaCVHelperException e) {
             e.printStackTrace();
             System.out.println("le filtre n'a pas pu etre appliqué");

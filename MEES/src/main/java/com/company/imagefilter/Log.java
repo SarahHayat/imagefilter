@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Log {
     void Log(String message){
         try {
-            FileWriter myWriter = new FileWriter("access.log");
+            FileWriter myWriter = new FileWriter("access.log", true);
             myWriter.write(message);
             //myWriter.write("Modificated image : " + image + "\n" + "Applicates : " + BlackAndWhite.class.getSimpleName() + " filter \n");
             System.out.println("Successfully wrote to the file ");
