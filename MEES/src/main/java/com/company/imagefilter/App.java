@@ -5,7 +5,7 @@ import org.apache.commons.cli.*;
 
 public class App
 {
-    /*public static void parser(String[] args) throws ParseException {
+    public static void parser(String[] args) throws ParseException {
         //options
         Options options = new Options();
 
@@ -33,8 +33,8 @@ public class App
             filters = cmd.getOptionValue("--filters");
             // filters without parse
         }
-        treatment(file, fileModificate, filters);
-    }*/
+     //   treatment(file, fileModificate, filters);
+    }
 
     public static void main(String[] args) throws ParseException {
         System.out.println("hello");
