@@ -1,11 +1,19 @@
 package com.company.imagefilter;
-
-
+import org.apache.commons.cli.*;
+import java.sql.SQLOutput;
 import org.apache.commons.cli.*;
 import java.lang.String;
 
-public class App
-{
+public class App {
+    public static void main(String[] args) {
+        System.out.println("hello");
+        try {
+            parser(args);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void parser(String[] args) throws ParseException {
         //options
        Options options = new Options();
@@ -37,13 +45,5 @@ public class App
         System.out.println("file = " + file + " fileModificate = " + fileModificate + " filters = " + filters);
       // treatment(file, fileModificate, filters);
     }
-
-    public static void main(String[] args) {
-        System.out.println("hello");
-        try {
-            parser(args);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
 }
+
