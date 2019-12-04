@@ -15,8 +15,6 @@ public class App {
    static Log l = new Log();
    static List<Filter> filterList = new ArrayList<>();
     public static void main(String[] args) {
-
-
         try {
             parser(args);
         } catch (ParseException | IOException e) {
@@ -64,7 +62,7 @@ public class App {
                             try {
 
                                 for (Filter f : filterList) {
-                                    image = f.process(image);
+                                    image = f. process(image);
                                 }
 
                                 // Mat result = bw.filterGrayscale(image, l);
@@ -87,6 +85,17 @@ public class App {
         }
     }
 
+    public static void help()
+    {
+        System.out.println("usage : imagefilter");
+        System.out.println("-f, --filters <list of filters>");
+        System.out.println("-i, <directory> File source");
+        System.out.println("-o, <directory> File for save picture");
+        System.out.println("-h, --help");
+        System.out.println("-file, <directory.ini> File config");
+        System.exit(0);
+    }
+
     public static void parser(String[] args) throws ParseException, IOException {
         //options
         Options options = new Options();
@@ -94,6 +103,7 @@ public class App {
         options.addOption("f", "filters", true, "filters");
         options.addOption("i", true, "File with picture source");
         options.addOption("o", true, "File with picture modificate");
+        options.addOption("h", "help", false, "help config");
         options.addOption("file",true,"file ini config");
 
         CommandLineParser parser = new DefaultParser();
@@ -102,6 +112,11 @@ public class App {
         String fileModificate = "output";
         String file = "toModificate";
         String filters = null;
+
+        if (cmd.hasOption("h"))
+        {
+            help();
+        }
 
         if (cmd.hasOption("file")) {
             String filePathIni = cmd.getOptionValue("file");
