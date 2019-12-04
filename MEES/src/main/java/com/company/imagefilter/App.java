@@ -33,12 +33,17 @@ public class App
             filters = cmd.getOptionValue("--filters");
             // filters without parse
         }
+<<<<<<< Updated upstream
      //   treatment(file, fileModificate, filters);
+=======
+        System.out.println("file = " + file + "fileModificate = " + fileModificate + "filters = " + filters);
+      // treatment(file, fileModificate, filters);
+>>>>>>> Stashed changes
     }
 
     public static void main(String[] args) throws ParseException {
         System.out.println("hello");
-       // parser(args);
+        parser(args);
 
 
     }
