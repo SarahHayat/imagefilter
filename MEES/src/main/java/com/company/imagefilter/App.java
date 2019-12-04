@@ -2,6 +2,10 @@ package com.company.imagefilter;
 
 
 import org.apache.commons.cli.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+
+import static org.bytedeco.opencv.global.opencv_imgcodecs.imread;
+import static org.bytedeco.opencv.helper.opencv_imgcodecs.cvLoadImage;
 
 public class App
 {
@@ -39,7 +43,17 @@ public class App
     public static void main(String[] args) throws ParseException {
         System.out.println("hello");
        // parser(args);
+        String filename = "toModificate/index.jpg";
 
+        Mat image = imread(filename);
+        BlackAndWhite bw = new BlackAndWhite();
+        try {
+            bw.filterGrayscale(image);
+        } catch (JavaCVHelperException e) {
+            e.printStackTrace();
+        }
+        System.out.println("modified image : " + image + "\n");
+        System.out.println( "Applicates : " + bw.getClass().getSimpleName()+ " filter \n");
 
     }
 }
