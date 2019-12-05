@@ -41,7 +41,33 @@ public class App {
         File directory = new File(file);
         File outputDir = new File(output);
         outputDir.mkdirs();
+
         int argc = 5;
+        if (filters != null) {
+            String filterArg = filters;
+            String[] split = filterArg.split("\\|");
+
+            for (String s : split) {
+
+                String[] str = s.split(":" , 2);
+                for (int j = 0; j < str.length; j++) {
+                    switch (str[j]) {
+                        case "blur":
+                            if (j + 1 < str.length)
+                                argc = Integer.parseInt(str[j + 1]);
+                            filterList.add(new Blur(argc));
+                            break;
+                        case "grayscale":
+                            filterList.add(new BlackAndWhite(argc));
+                            break;
+                        case "dilate":
+                            if (j + 1 < str.length)
+                                argc = Integer.parseInt(str[j + 1]);
+                            filterList.add(new Dilate(argc));
+                            break;
+                    }
+                }
+            }
 
         if (directory.isDirectory())
         {
@@ -56,37 +82,12 @@ public class App {
                     {
                        Mat image = opencv_imgcodecs.imread(String.valueOf(listFile[i]));
                        // BlackAndWhite bw = new BlackAndWhite();
-                        if (filters != null) {
-                            String filterArg = filters;
-                            String[] split = filterArg.split("\\|");
 
-                            for (String s : split) {
-
-                                String[] str = s.split(":" , 2);
-                                for (int j = 0; j < str.length; j++) {
-                                    System.out.println("str = " + str[j]);
-                                    switch (str[j]) {
-                                        case "blur":
-                                            if (j + 1 < str.length)
-                                                argc = Integer.parseInt(str[j + 1]);
-                                            filterList.add(new Blur());
-                                            break;
-                                        case "grayscale":
-                                            filterList.add(new BlackAndWhite());
-                                            break;
-                                        case "dilate":
-                                            if (j + 1 < str.length)
-                                                argc = Integer.parseInt(str[j + 1]);
-                                            filterList.add(new Dilate());
-                                            break;
-                                    }
-                                }
-                            }
 
                             try {
 
                                 for (Filter f : filterList) {
-                                    image = f. process(image, argc, String.valueOf(listFile[i]));
+                                    image = f. process(image, String.valueOf(listFile[i]));
                                 }
 
                                 String nameFile = listFile[i].getName();//.split(splitFile);
@@ -107,7 +108,7 @@ public class App {
     }
 
     /**
-     * Display each commands 
+     * Display each commands
      */
     public static void help()
     {
@@ -160,7 +161,6 @@ public class App {
                     log = "log";
                 Ini.Section filter = fileIni.get("filters");
                 String filterAdd =  filter.get("content");
-                System.out.println(filterAdd);
                 if (filterAdd != null)
                     filters = String.valueOf(filterAdd);
             }
@@ -179,8 +179,6 @@ public class App {
             filters = cmd.getOptionValue("f");
             // filters without parse
         }
-        System.out.println("file = " + file + " fileModificate = " + fileModificate + " filters = " + filters);
-
         treatment(file, fileModificate, filters);
     }
 }
