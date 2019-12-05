@@ -67,6 +67,8 @@ public class App {
                                     System.out.println("str = " + str[j]);
                                     switch (str[j]) {
                                         case "blur":
+                                            if (j + 1 < str.length)
+                                                argc = Integer.parseInt(str[j + 1]);
                                             filterList.add(new Blur());
                                             break;
                                         case "grayscale":
@@ -119,7 +121,7 @@ public class App {
     }
 
     /**
-     * Parse a .ini file or the CommandLine
+     * Parse a .ini file and the CommandLine
      * @param args Program argument
      * @throws ParseException /
      * @throws IOException /
