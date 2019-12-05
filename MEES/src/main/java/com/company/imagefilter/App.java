@@ -27,7 +27,7 @@ public class App {
         File directory = new File(file);
         File outputDir = new File(output);
         outputDir.mkdirs();
-        int argc = 0;
+        int argc = 5;
 
         if (directory.isDirectory())
         {
@@ -70,23 +70,20 @@ public class App {
                             try {
 
                                 for (Filter f : filterList) {
-                                    image = f. process(image, argc);
+                                    image = f. process(image, argc, String.valueOf(listFile[i]));
                                 }
 
-                                // Mat result = bw.filterGrayscale(image, l);
-                               // String[] splitFile = filterArg.split("\\/");
                                 String nameFile = listFile[i].getName();//.split(splitFile);
-                                System.out.println("nameFile = " +nameFile + "output =" + output);
 
                                 File outputFile = new File(outputDir, nameFile);
 
                                 opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
                             } catch (JavaCVHelperException e) {
                                 e.printStackTrace();
-                                System.out.println("le filtre n'a pas pu etre appliqué");
+                                System.out.println("The application of filter work");
                             }
                         }
-                        System.out.println("L'application du filtre à bien marché");
+                        System.out.println("The application of filter doesn't work");
                     }
                 }
             }
@@ -142,7 +139,6 @@ public class App {
                 if (filterAdd != null)
                     filters = String.valueOf(filterAdd);
             }
-
         }
         else
             System.out.println("file not found");

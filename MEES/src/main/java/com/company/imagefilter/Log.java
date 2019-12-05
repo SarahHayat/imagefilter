@@ -8,7 +8,6 @@ public class Log {
         try {
             FileWriter myWriter = new FileWriter("access.log", true);
             myWriter.write(message);
-            //myWriter.write("Modificated image : " + image + "\n" + "Applicates : " + BlackAndWhite.class.getSimpleName() + " filter \n");
             System.out.println("Successfully wrote to the file ");
             myWriter.close();
         } catch (IOException e) {

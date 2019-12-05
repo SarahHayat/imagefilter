@@ -12,22 +12,17 @@ import java.io.IOException;
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
 
 public class BlackAndWhite extends Filter {
-    //public Mat filterGrayscale() throws JavaCVHelperException {
-
-    //return  filterGrayscale();
-    //}
-
 
     @Override
-    Mat process(Mat image, int args) throws JavaCVHelperException {
+    Mat process(Mat image, int args, String file) throws JavaCVHelperException {
         Mat result = new Mat(image.rows(), image.cols(), CvType.CV_8UC3);
         cvtColor(image, result, Imgproc.COLOR_RGB2GRAY);
-
-        App.l.Log(" image " + image + "\n" + "filtre : " + BlackAndWhite.class.getSimpleName() + "\n");
+        System.out.println(" image :" + file + "\n" + "filter : " + BlackAndWhite.class.getSimpleName() + "\n");
+        App.l.Log(" image " + file + "\n" + "filter : " + BlackAndWhite.class.getSimpleName() + "\n");
 
 
         if (result == null) {
-            throw new JavaCVHelperException("le noir et blanc ne marche pas" );
+            throw new JavaCVHelperException("The grayscale doesn't work" );
 
         }return result;
     }
