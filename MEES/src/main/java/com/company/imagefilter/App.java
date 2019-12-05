@@ -85,7 +85,6 @@ public class App {
 
 
                             try {
-
                                 for (Filter f : filterList) {
                                     image = f. process(image, String.valueOf(listFile[i]));
                                 }
@@ -114,10 +113,11 @@ public class App {
     {
         System.out.println("usage : imagefilter");
         System.out.println("-f, --filters <list of filters>");
-        System.out.println("-i, <directory> File source");
-        System.out.println("-o, <directory> File for save picture");
+        System.out.println("-i <directory> File source");
+        System.out.println("-o <directory> File for save picture");
         System.out.println("-h, --help");
-        System.out.println("-file, <directory.ini> File config");
+        System.out.println("-file, --config-file <directory.ini> File config");
+        System.out.println("-list, --list-filters List of filters");
         System.exit(0);
     }
 
@@ -135,7 +135,8 @@ public class App {
         options.addOption("i", true, "File with picture source");
         options.addOption("o", true, "File with picture modificate");
         options.addOption("h", "help", false, "help config");
-        options.addOption("file",true,"file ini config");
+        options.addOption("file","config-file",true,"file ini config");
+        options.addOption("list", "list-filters",false,"list of filters");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -145,8 +146,13 @@ public class App {
         String filters = null;
 
         if (cmd.hasOption("h"))
-        {
             help();
+        if (cmd.hasOption("list"))
+        {
+            System.out.println("blackAndWhite");
+            System.out.println("blur:<param> | blur");
+            System.out.println("dilate:<param> | dilate");
+            System.exit(0);
         }
 
         if (cmd.hasOption("file")) {
