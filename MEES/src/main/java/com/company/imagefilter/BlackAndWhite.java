@@ -14,7 +14,7 @@ public class BlackAndWhite extends Filter {
     }
 
     /**
-     * A VOIR
+     * applicate black and white filter
      * @param image Images Processed
      * @param args Program Argument
      * @param file Output Directory

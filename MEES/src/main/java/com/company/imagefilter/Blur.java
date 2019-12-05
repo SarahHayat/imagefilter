@@ -12,7 +12,7 @@ public class Blur extends Filter  {
     }
 
     /**
-     * A VOIR
+     * Applicate a filter blur
      * @param image Images Processed
      * @param args Program Argument
      * @param file Output Directory

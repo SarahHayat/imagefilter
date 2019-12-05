@@ -14,7 +14,7 @@ public class Dilate extends Filter {
     }
 
     /**
-     * A VOIR
+     * Applicate dilate filter
      * @param image Images Processed
      * @param args Program Argument
      * @param file Output Directory

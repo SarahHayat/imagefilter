@@ -5,7 +5,7 @@ import org.bytedeco.opencv.opencv_core.Mat;
 
 public abstract  class Filter {
     /**
-     *  A VOIR
+     *  mother class filter
      * @param image Processed Image
      * @param args CommandLine Argument
      * @param file Directory output
