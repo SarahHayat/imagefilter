@@ -10,7 +10,7 @@ public class Log {
      */
     void log(String message){
         try {
-            FileWriter myWriter = new FileWriter("access.log");
+            FileWriter myWriter = new FileWriter("access.log", true);
             myWriter.write(message);
             System.out.println("Successfully wrote to the file ");
             myWriter.close();

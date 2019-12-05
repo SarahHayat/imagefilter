@@ -29,6 +29,7 @@ public class Dilate extends Filter {
             Mat result = image.clone();
             Mat element = getStructuringElement(Imgproc.MORPH_RECT, new Size(2 * this.argc + 1, 2 * this.argc + 1));
             dilate(image, result, element);
+
             System.out.println(" image :" + file + "\n" + "filter : " + Dilate.class.getSimpleName() + "\n");
             App.l.log(" image " + file + "\n" + "filter : " + Dilate.class.getSimpleName() + "\n");
 
