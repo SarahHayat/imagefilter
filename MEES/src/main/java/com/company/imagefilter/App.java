@@ -33,7 +33,7 @@ public class App {
      * Set filter of commandLine to each picture in define directory
      * @param file Directory of pictures/images
      * @param output Directory of output filtered images
-     * @param filters
+     * @param filters List of filters to applicate
      */
 
     public static void treatment(String file, String output, String filters) {
