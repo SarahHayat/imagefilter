@@ -19,7 +19,7 @@ public class BlackAndWhite extends Filter {
 
 
     @Override
-    Mat process(Mat image) throws JavaCVHelperException {
+    Mat process(Mat image, int args) throws JavaCVHelperException {
         Mat result = new Mat(image.rows(), image.cols(), CvType.CV_8UC3);
         cvtColor(image, result, Imgproc.COLOR_RGB2GRAY);
 

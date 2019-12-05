@@ -10,7 +10,7 @@ public class Blur extends Filter  {
 //
 
     @Override
-    Mat process(Mat image) throws JavaCVHelperException {
+    Mat process(Mat image, int args) throws JavaCVHelperException {
             int size = 21;
             Mat result = image.clone();
             GaussianBlur(image, result, new Size(size, size), 0);

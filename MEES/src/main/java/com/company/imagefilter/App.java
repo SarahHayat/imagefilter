@@ -27,6 +27,7 @@ public class App {
         File directory = new File(file);
         File outputDir = new File(output);
         outputDir.mkdirs();
+        int argc = 0;
 
         if (directory.isDirectory())
         {
@@ -46,23 +47,29 @@ public class App {
                             String[] split = filterArg.split("\\|");
 
                             for (String s : split) {
-                                switch (s) {
-                                    case "blur":
-                                        filterList.add(new Blur());
-                                        break;
-                                    case "grayscale":
-                                        filterList.add(new BlackAndWhite());
-                                        break;
-                                    case "dilate":
-                                        filterList.add(new Dilate());
-                                        break;
+
+                                String[] str = s.split(":");
+                                for (int j = 0; j < str.length; j++) {
+                                    System.out.println("str = " + str[j]);
+                                    switch (str[j]) {
+                                        case "blur":
+                                            filterList.add(new Blur());
+                                            break;
+                                        case "grayscale":
+                                            filterList.add(new BlackAndWhite());
+                                            break;
+                                        case "dilate":
+                                            argc = Integer.parseInt(str[j + 1]);
+                                            filterList.add(new Dilate());
+                                            break;
+                                    }
                                 }
                             }
 
                             try {
 
                                 for (Filter f : filterList) {
-                                    image = f. process(image);
+                                    image = f. process(image, argc);
                                 }
 
                                 // Mat result = bw.filterGrayscale(image, l);

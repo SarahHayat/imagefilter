@@ -4,7 +4,7 @@ import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 public abstract  class Filter {
-   abstract Mat process (Mat image) throws JavaCVHelperException;
+   abstract Mat process (Mat image, int args) throws JavaCVHelperException;
 //        String filename = "toModificate/index.jpg";
 //        Mat image = opencv_imgcodecs.imread(filename);
 //        BlackAndWhite bw = new BlackAndWhite();
