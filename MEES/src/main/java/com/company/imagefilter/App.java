@@ -48,7 +48,7 @@ public class App {
 
                             for (String s : split) {
 
-                                String[] str = s.split(":");
+                                String[] str = s.split(":" , 2);
                                 for (int j = 0; j < str.length; j++) {
                                     System.out.println("str = " + str[j]);
                                     switch (str[j]) {
@@ -59,7 +59,8 @@ public class App {
                                             filterList.add(new BlackAndWhite());
                                             break;
                                         case "dilate":
-                                            argc = Integer.parseInt(str[j + 1]);
+                                            if (j + 1 < str.length)
+                                                argc = Integer.parseInt(str[j + 1]);
                                             filterList.add(new Dilate());
                                             break;
                                     }
