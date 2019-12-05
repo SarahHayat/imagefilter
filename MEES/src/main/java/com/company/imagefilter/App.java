@@ -11,16 +11,30 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class App {
-   static Log l = new Log();
+
+    static Log l = new Log();
    static List<Filter> filterList = new ArrayList<>();
-    public static void main(String[] args) {
+
+    /**
+     *
+      * @param args Program argument
+     */
+   public static void main(String[] args) {
         try {
             parser(args);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Set filter of commandLine to each picture in define directory
+     * @param file Directory of pictures/images
+     * @param output Directory of output filtered images
+     * @param filters
+     */
 
     public static void treatment(String file, String output, String filters) {
 
@@ -90,6 +104,9 @@ public class App {
         }
     }
 
+    /**
+     * Display each commands 
+     */
     public static void help()
     {
         System.out.println("usage : imagefilter");
@@ -101,6 +118,12 @@ public class App {
         System.exit(0);
     }
 
+    /**
+     * Parse a .ini file or the CommandLine
+     * @param args Program argument
+     * @throws ParseException /
+     * @throws IOException /
+     */
     public static void parser(String[] args) throws ParseException, IOException {
         //options
         Options options = new Options();

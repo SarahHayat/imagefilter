@@ -12,7 +12,14 @@ import java.io.IOException;
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
 
 public class BlackAndWhite extends Filter {
-
+    /**
+     * A VOIR
+     * @param image Images Processed
+     * @param args Program Argument
+     * @param file Output Directory
+     * @return result = Filtered Image
+     * @throws JavaCVHelperException
+     */
     @Override
     Mat process(Mat image, int args, String file) throws JavaCVHelperException {
         Mat result = new Mat(image.rows(), image.cols(), CvType.CV_8UC3);

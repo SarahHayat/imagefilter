@@ -8,7 +8,14 @@ import static org.bytedeco.opencv.global.opencv_imgproc.dilate;
 import static org.bytedeco.opencv.global.opencv_imgproc.getStructuringElement;
 
 public class Dilate extends Filter {
-
+    /**
+     * A VOIR
+     * @param image Images Processed
+     * @param args Program Argument
+     * @param file Output Directory
+     * @return result = Filtered Image
+     * @throws JavaCVHelperException
+     */
         @Override
         Mat process(Mat image, int args, String file) throws JavaCVHelperException {
 
