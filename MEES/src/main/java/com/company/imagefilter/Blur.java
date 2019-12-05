@@ -14,7 +14,6 @@ public class Blur extends Filter  {
     /**
      * Applicate a filter blur
      * @param image Images Processed
-     * @param args Program Argument
      * @param file Output Directory
      * @return result = Filtered Image
      * @throws JavaCVHelperException
@@ -23,7 +22,8 @@ public class Blur extends Filter  {
     Mat process(Mat image, String file) throws JavaCVHelperException {
             Mat result = image.clone();
             GaussianBlur(image, result, new Size(this.argc, this.argc), 0);
-        System.out.println(" image :" + file + "\n" + "filter : " + Blur.class.getSimpleName() + "\n");
+
+            System.out.println(" image :" + file + "\n" + "filter : " + Blur.class.getSimpleName() + "\n");
             App.l.log(" image " + file + "\n" + "filter : " + Blur.class.getSimpleName() + "\n");
 
             if (result == null) {

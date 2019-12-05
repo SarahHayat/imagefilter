@@ -25,6 +25,7 @@ public class BlackAndWhite extends Filter {
     Mat process(Mat image, String file) throws JavaCVHelperException {
         Mat result = new Mat(image.rows(), image.cols(), CvType.CV_8UC3);
         cvtColor(image, result, Imgproc.COLOR_RGB2GRAY);
+
         System.out.println(" image :" + file + "\n" + "filter : " + BlackAndWhite.class.getSimpleName() + "\n");
         App.l.log(" image " + file + "\n" + "filter : " + BlackAndWhite.class.getSimpleName() + "\n");
 
