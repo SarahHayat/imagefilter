@@ -6,6 +6,11 @@ import org.bytedeco.opencv.opencv_core.Size;
 import static org.bytedeco.opencv.global.opencv_imgproc.GaussianBlur;
 
 public class Blur extends Filter  {
+    private int argc;
+    public Blur(int argc) {
+        this.argc = argc;
+    }
+
     /**
      * A VOIR
      * @param image Images Processed
@@ -15,16 +20,17 @@ public class Blur extends Filter  {
      * @throws JavaCVHelperException
      */
     @Override
-    Mat process(Mat image, int args, String file) throws JavaCVHelperException {
+    Mat process(Mat image, String file) throws JavaCVHelperException {
             Mat result = image.clone();
-            GaussianBlur(image, result, new Size(args, args), 0);
+            GaussianBlur(image, result, new Size(this.argc, this.argc), 0);
         System.out.println(" image :" + file + "\n" + "filter : " + Blur.class.getSimpleName() + "\n");
-            App.l.Log(" image " + file + "\n" + "filter : " + Blur.class.getSimpleName() + "\n");
+            App.l.log(" image " + file + "\n" + "filter : " + Blur.class.getSimpleName() + "\n");
 
             if (result == null) {
                 throw new JavaCVHelperException("The blur doesn't work");
 
             }return result;
         }
-        }
+
+}
 

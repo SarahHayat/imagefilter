@@ -11,7 +11,7 @@ public abstract  class Filter {
      * @param file Directory output
      * @throws JavaCVHelperException
      */
-    abstract Mat process (Mat image, int args, String file) throws JavaCVHelperException;
+    abstract Mat process (Mat image, String file) throws JavaCVHelperException;
 
     }
 

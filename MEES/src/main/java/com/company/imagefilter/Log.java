@@ -8,7 +8,7 @@ public class Log {
      *  Create and Write in a Directory all Operations
      * @param message Message to indicate Operation
      */
-    void Log(String message){
+    void log(String message){
         try {
             FileWriter myWriter = new FileWriter("access.log", true);
             myWriter.write(message);
