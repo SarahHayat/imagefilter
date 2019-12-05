@@ -27,7 +27,7 @@ public class App {
         File directory = new File(file);
         File outputDir = new File(output);
         outputDir.mkdirs();
-        int argc = 0;
+        int argc = 5;
 
         if (directory.isDirectory())
         {
@@ -70,7 +70,7 @@ public class App {
                             try {
 
                                 for (Filter f : filterList) {
-                                    image = f. process(image, argc);
+                                    image = f. process(image, argc, String.valueOf(listFile[i]));
                                 }
 
                                 // Mat result = bw.filterGrayscale(image, l);

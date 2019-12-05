@@ -10,12 +10,11 @@ public class Blur extends Filter  {
 //
 
     @Override
-    Mat process(Mat image, int args) throws JavaCVHelperException {
-            int size = 21;
+    Mat process(Mat image, int args, String file) throws JavaCVHelperException {
             Mat result = image.clone();
-            GaussianBlur(image, result, new Size(size, size), 0);
+            GaussianBlur(image, result, new Size(args, args), 0);
 
-            App.l.Log(" image " + image + "\n" + "filtre : " + Blur.class.getSimpleName() + "\n");
+            App.l.Log(" image " + file + "\n" + "filtre : " + Blur.class.getSimpleName() + "\n");
 
             if (result == null) {
                 throw new JavaCVHelperException("le flou ne marche pas");
