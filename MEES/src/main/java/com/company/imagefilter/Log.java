@@ -4,6 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Log {
+    /**
+     *  Create and Write in a Directory all Operations
+     * @param message Message to indicate Operation
+     */
     void Log(String message){
         try {
             FileWriter myWriter = new FileWriter("access.log", true);

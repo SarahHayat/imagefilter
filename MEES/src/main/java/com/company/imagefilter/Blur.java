@@ -6,7 +6,14 @@ import org.bytedeco.opencv.opencv_core.Size;
 import static org.bytedeco.opencv.global.opencv_imgproc.GaussianBlur;
 
 public class Blur extends Filter  {
-
+    /**
+     * A VOIR
+     * @param image Images Processed
+     * @param args Program Argument
+     * @param file Output Directory
+     * @return result = Filtered Image
+     * @throws JavaCVHelperException
+     */
     @Override
     Mat process(Mat image, int args, String file) throws JavaCVHelperException {
             Mat result = image.clone();
