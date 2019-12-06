@@ -7,7 +7,6 @@ public abstract  class Filter {
     /**
      *  mother class filter
      * @param image Processed Image
-     * @param args CommandLine Argument
      * @param file Directory output
      * @throws JavaCVHelperException
      */

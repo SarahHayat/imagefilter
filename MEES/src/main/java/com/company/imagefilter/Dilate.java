@@ -18,7 +18,6 @@ public class Dilate extends Filter {
     /**
      * Applicate dilate filter
      * @param image Images Processed
-     * @param args Program Argument
      * @param file Output Directory
      * @return result = Filtered Image
      * @throws JavaCVHelperException

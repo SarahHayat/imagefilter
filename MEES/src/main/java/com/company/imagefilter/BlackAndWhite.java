@@ -16,7 +16,6 @@ public class BlackAndWhite extends Filter {
     /**
      * applicate black and white filter
      * @param image Images Processed
-     * @param args Program Argument
      * @param file Output Directory
      * @return result = Filtered Image
      * @throws JavaCVHelperException
